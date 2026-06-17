@@ -1,0 +1,60 @@
+name: "Auditoria de Extravios"
+code: "auditoria-extravios"
+description: >
+  Equipe de auditoria que reconcilia registros, identifica e classifica
+  extravios (mercadorias, ativos ou valores), quantifica o impacto financeiro,
+  investiga a causa raiz e entrega um relatório de auditoria com recomendações
+  de prevenção — tudo com checkpoints de aprovação humana.
+icon: "🔎"
+version: "1.0.0"
+created: "2026-06-17"
+mode: "alta-performance"
+
+company: "_opensquad/_memory/company.md"
+preferences: "_opensquad/_memory/preferences.md"
+memory: "_memory/memories.md"
+
+target_audience: "Gestão de Risco, Controladoria, Prevenção de Perdas e Logística"
+domain: "Auditoria interna / Prevenção de perdas"
+performance_mode: "alta-performance"
+
+skills:
+  - web_search
+  - web_fetch
+
+data:
+  - pipeline/data/audit-scope-template.md
+  - pipeline/data/classification-framework.md
+  - pipeline/data/quality-criteria.md
+  - pipeline/data/anti-patterns.md
+
+agents:
+  - id: data-collector
+    name: "Clara Coleta"
+    icon: "🗂️"
+    custom: agents/data-collector.custom.md
+
+  - id: auditor
+    name: "Aurélio Auditor"
+    icon: "🔎"
+    custom: agents/auditor.custom.md
+
+  - id: risk-analyst
+    name: "Renata Risco"
+    icon: "📊"
+    custom: agents/risk-analyst.custom.md
+
+  - id: report-writer
+    name: "Rafael Relato"
+    icon: "📝"
+    custom: agents/report-writer.custom.md
+
+  - id: compliance-reviewer
+    name: "Cida Compliance"
+    icon: "✅"
+    custom: agents/compliance-reviewer.custom.md
+
+pipeline:
+  entry: pipeline/pipeline.yaml
+
+output_dir: output/

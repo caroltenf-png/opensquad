@@ -1,0 +1,103 @@
+name: "Pipeline — Auditoria de Extravios"
+version: "1.0.0"
+created: "2026-06-17"
+squad: "auditoria-extravios"
+
+description: >
+  Pipeline completo de auditoria de extravios: define o escopo, coleta e
+  normaliza os registros, reconcilia o esperado x realizado, classifica e
+  quantifica cada extravio, investiga causa raiz e padrões, e entrega um
+  relatório de auditoria com recomendações. 4 checkpoints garantem aprovação
+  humana antes de cada avanço crítico.
+
+mode: "alta-performance"
+
+steps:
+  - id: step-01
+    name: "Definição do Escopo"
+    type: checkpoint
+    file: steps/step-01-define-scope.md
+
+  - id: step-02
+    name: "Coleta e Normalização de Dados"
+    type: agent
+    agent: data-collector
+    tasks:
+      - collect-normalize
+    file: steps/step-02-collect-data.md
+    depends_on: step-01
+
+  - id: step-03
+    name: "Validação dos Dados Coletados"
+    type: checkpoint
+    file: steps/step-03-validate-data.md
+    depends_on: step-02
+
+  - id: step-04
+    name: "Reconciliação e Identificação de Extravios"
+    type: agent
+    agent: auditor
+    tasks:
+      - reconcile-identify
+      - quantify-impact
+    file: steps/step-04-reconcile.md
+    depends_on: step-03
+
+  - id: step-05
+    name: "Aprovação dos Extravios Identificados"
+    type: checkpoint
+    file: steps/step-05-approve-findings.md
+    depends_on: step-04
+
+  - id: step-06
+    name: "Análise de Causa Raiz e Padrões"
+    type: agent
+    agent: risk-analyst
+    tasks:
+      - root-cause-analysis
+    file: steps/step-06-root-cause.md
+    depends_on: step-05
+
+  - id: step-07
+    name: "Geração do Relatório de Auditoria"
+    type: agent
+    agent: report-writer
+    tasks:
+      - write-report
+    file: steps/step-07-write-report.md
+    depends_on: step-06
+
+  - id: step-08
+    name: "Aprovação do Relatório"
+    type: checkpoint
+    file: steps/step-08-approve-report.md
+    depends_on: step-07
+
+  - id: step-09
+    name: "Revisão de Compliance"
+    type: agent
+    agent: compliance-reviewer
+    optional: true
+    tasks:
+      - validate-compliance
+    file: steps/step-09-compliance-review.md
+    depends_on: step-08
+
+checkpoints:
+  - step-01  # Escopo: período, unidades, fontes de dados
+  - step-03  # Validação dos dados coletados
+  - step-05  # Aprovação dos extravios identificados
+  - step-08  # Aprovação do relatório final
+
+output:
+  artifacts:
+    - output/audit-scope.md
+    - output/raw-records.yaml
+    - output/normalized-dataset.yaml
+    - output/data-quality-report.md
+    - output/discrepancies.yaml
+    - output/loss-findings.yaml
+    - output/financial-impact.yaml
+    - output/root-cause-analysis.md
+    - output/audit-report.md
+    - output/compliance-review.md

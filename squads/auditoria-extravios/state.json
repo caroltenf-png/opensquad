@@ -1,0 +1,15 @@
+{
+  "squad": "auditoria-extravios",
+  "status": "idle",
+  "step": { "current": 0, "total": 9, "label": "step-01" },
+  "agents": [
+    { "id": "data-collector", "name": "Clara Coleta", "icon": "🗂️", "status": "idle", "deliverTo": null, "desk": { "col": 1, "row": 1 } },
+    { "id": "auditor", "name": "Aurélio Auditor", "icon": "🔎", "status": "idle", "deliverTo": null, "desk": { "col": 2, "row": 1 } },
+    { "id": "risk-analyst", "name": "Renata Risco", "icon": "📊", "status": "idle", "deliverTo": null, "desk": { "col": 1, "row": 2 } },
+    { "id": "report-writer", "name": "Rafael Relato", "icon": "📝", "status": "idle", "deliverTo": null, "desk": { "col": 2, "row": 2 } },
+    { "id": "compliance-reviewer", "name": "Cida Compliance", "icon": "✅", "status": "idle", "deliverTo": null, "desk": { "col": 1, "row": 3 } }
+  ],
+  "handoff": null,
+  "startedAt": null,
+  "updatedAt": "2026-06-17T00:00:00.000Z"
+}
